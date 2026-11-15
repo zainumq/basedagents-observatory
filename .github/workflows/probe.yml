@@ -1,0 +1,42 @@
+name: Observatory probe
+
+on:
+  schedule:
+    # Every 5 minutes (UTC). 5 minutes is the sampling ceiling for this
+    # observatory: monitoring, not load.
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize runs so two scheduled runs never push at the same time.
+concurrency:
+  group: observatory-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sample endpoints
+        run: |
+          mkdir -p pilot
+          python3 probe.py --once --vantage github-actions --out pilot/github-actions.jsonl
+      - name: Commit samples
+        run: |
+          git config user.name "observatory-bot"
+          git config user.email "observatory-bot@users.noreply.github.com"
+          git checkout "${{ github.ref_name }}"
+          git add pilot/github-actions.jsonl
+          if git diff --cached --quiet; then
+            echo "no new samples"
+          else
+            git commit -m "probe: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase
+            git push
+          fi
