@@ -1,0 +1,12 @@
+[Unit]
+Description=Run the BasedAgents observatory probe every 5 minutes
+
+[Timer]
+# Every 5 minutes, aligned to wall-clock 5-minute boundaries.
+# 5 minutes is the ceiling: do NOT run this more often in the pilot.
+OnCalendar=*:0/5
+Persistent=true
+Unit=observatory.service
+
+[Install]
+WantedBy=timers.target
