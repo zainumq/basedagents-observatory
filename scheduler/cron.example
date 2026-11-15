@@ -1,0 +1,7 @@
+# BasedAgents observatory probe — cron example.
+# One round every 5 minutes (the ceiling; do not run more often).
+# EDIT the paths and the --vantage label for your deployment, then
+# install with: crontab -e
+#
+# m h dom mon dow  command
+*/5 * * * * /usr/bin/python3 /opt/basedagents-observatory/probe.py --once --vantage vantage-a --out /var/lib/basedagents-observatory/samples.jsonl >> /var/lib/basedagents-observatory/probe.log 2>&1
