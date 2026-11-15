@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0E8FE8"/>
+  <!-- arm reaching up to the coin -->
+  <line x1="255" y1="355" x2="185" y2="265" stroke="#FFFFFF" stroke-width="44" stroke-linecap="round"/>
+  <!-- ghost body -->
+  <path d="M220,475 L220,345 C220,285 265,245 320,245 C375,245 420,285 420,345 L420,475 Q402,448 385,475 Q368,448 350,475 Q332,448 315,475 Q297,448 280,475 Q262,448 245,475 Q232,448 220,475 Z" fill="#FFFFFF"/>
+  <!-- gold coin -->
+  <circle cx="170" cy="165" r="110" fill="#FFC93C" stroke="#D99400" stroke-width="11"/>
+  <circle cx="170" cy="165" r="82" fill="none" stroke="#E8A020" stroke-width="7"/>
+  <path d="M125,165 L158,198 L222,118" fill="none" stroke="#B87A00" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- face -->
+  <ellipse cx="290" cy="350" rx="13" ry="19" fill="#0B4F8C"/>
+  <ellipse cx="352" cy="350" rx="13" ry="19" fill="#0B4F8C"/>
+  <circle cx="294" cy="343" r="5" fill="#FFFFFF"/>
+  <circle cx="356" cy="343" r="5" fill="#FFFFFF"/>
+  <path d="M292,388 Q321,407 350,388" fill="none" stroke="#0B4F8C" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="262" cy="382" rx="13" ry="7" fill="#FFB3C7" opacity="0.85"/>
+  <ellipse cx="380" cy="382" rx="13" ry="7" fill="#FFB3C7" opacity="0.85"/>
+</svg>
