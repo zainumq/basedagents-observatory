@@ -1,0 +1,16 @@
+[Unit]
+Description=BasedAgents API observatory probe (one round, read-only)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# EDIT the paths and the --vantage label for your deployment.
+# --out must point at a file the service user can append to.
+ExecStart=/usr/bin/python3 /opt/basedagents-observatory/probe.py --once --vantage vantage-a --out /var/lib/basedagents-observatory/samples.jsonl
+WorkingDirectory=/opt/basedagents-observatory
+User=observatory
+Group=observatory
+
+[Install]
+WantedBy=multi-user.target
