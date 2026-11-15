@@ -1,0 +1,12 @@
+# BasedAgents observatory probe — tmux one-liner (daemon mode).
+# Runs probe.py in a detached tmux session; the daemon aligns rounds
+# to wall-clock 5-minute boundaries itself. EDIT the paths and the
+# --vantage label for your deployment.
+#
+# Start:
+tmux new-session -d -s observatory "python3 /opt/basedagents-observatory/probe.py --daemon --interval 5 --vantage vantage-a --out /var/lib/basedagents-observatory/samples.jsonl"
+#
+# Watch it:
+#   tmux attach -t observatory
+# Stop it (the probe writes a probe_stop record on SIGTERM):
+#   tmux send-keys -t observatory C-c
